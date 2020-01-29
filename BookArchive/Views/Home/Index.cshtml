@@ -1,0 +1,31 @@
+﻿@using BookArchive.Models
+@model IEnumerable<Kitap>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+        <h1>Kayıtlı Kitaplar</h1>
+    </div>
+
+    @foreach (var kitap in Model)
+    {
+        <div class="row">
+            <div class="panel panel-primary">
+                <div class="panel-heading">@kitap.KitapAdi</div>
+                <div class="panel-body">
+                    Yazarın Adı: @kitap.Yazar.YazarAd <br />
+                    Yazarın Soyadı: @kitap.Yazar.YazarSoyad <br />
+
+                </div>
+                <div class="panel-footer">
+                    @Html.ActionLink("Sil", "Delete", new { id = kitap.ID }) |
+                    @Html.ActionLink("Güncelle", "Update", new { id = kitap.ID }) 
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
